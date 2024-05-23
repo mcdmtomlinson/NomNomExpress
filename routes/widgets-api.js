@@ -22,6 +22,27 @@ router.get('/', (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
+
+
+//// ROUTE TO GET MENU ITEMS
+
+  // GET request is made to /menuItems
+router.get("/menuItems", (req, res) => {
+  // Calling getAllMenuItems from DATABASE.JS (not network.js)
+  // Get all menuItems,(not including user input from form - STRETCH)
+  db
+    // returns a promise that resolves to the rows returned by the query
+    .getAllMenuItems()
+    // sends a response containing the retrieved properties data back to the client
+    // as a JSON object
+    .then((menuItems) => res.send({ menuItems }))
+    .catch((e) => {
+      console.error(e);
+      res.send(e);
+    });
+});
+
+
 });
 
 module.exports = router;

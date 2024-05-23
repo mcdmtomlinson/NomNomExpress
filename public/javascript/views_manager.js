@@ -17,6 +17,10 @@ $(() => {
       $cartForm.appendTo($main);
       break;
 
+    case 'menuItems':
+      $menuItems.appendTo($main);
+      break;
+
     case 'error': {
       const $error = $(`<p>${arguments[1]}</p>`);
       $error.appendTo('body');

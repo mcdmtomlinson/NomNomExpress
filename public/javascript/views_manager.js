@@ -28,9 +28,14 @@ $(() => {
         $error.remove();
         views_manager.show('cart');
       }, 2000);
-
       break;
     }
+
+    case 'orderSuccesful': {
+      $orderSuccesful.appendTo($main);
+      break;
+    }
+
     }
   };
 

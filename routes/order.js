@@ -10,6 +10,7 @@ const router  = express.Router();
 // const authMiddleware = require("../middleware/auth-middleware");
 // const { sendMessage } = require("../helpers/sendMessage");
 const moment = require('moment');
+const { createOrder, createOrderDetails } = require('../db/queries/03_orders');
 
 // Required restaurant to be logged in to access order routes
 /* router.use((req, res, next) => {
@@ -87,7 +88,19 @@ module.exports = (database) => {
 
   router.post('/', (req, res)=> {
     const data = req.body;
-    database.createOrder(data.clientId, data.restaurantId);
+    createOrder(data.clientId, data.restaurantId)
+      .then((order)=>{
+        for (let x in data.items) {
+          const orderDetailsData = {
+            'order_id': order.id,
+            'menu_item_id':data.items[x].id,
+            'quantity': data.items[x].quantity,
+            'special_requests': data.items[x].specialRequests,
+            'price': data.items[x].price
+          };
+          createOrderDetails(orderDetailsData);
+        }
+      });
     return res.sendStatus(200);
   });
 

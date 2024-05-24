@@ -25,7 +25,7 @@ function createOrder(data) {
     method:'POST',
     data,
     success: function(response) {
-      console.log('Order confirmed: ', response);
+      views_manager.show('orderSuccesful');
     },
     error: function(error) {
       console.log('Error confirming order; ', error);

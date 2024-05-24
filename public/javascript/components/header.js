@@ -15,7 +15,8 @@ $(() => {
       userLinks = `
       <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          <li class="nav-item">Home</li>
+          <li class="nav-item" id="home" >Home</li>
+          <li class="nav-item" id="menu" >Menu</li>
           <li class="nav-item">Log In</li>
           <li class="nav-item">Sign Up</li>
           <li class="nav-item" id="cart">Check out</li>
@@ -48,7 +49,7 @@ $(() => {
 
 
   // If home in the header is clicked, append $menuItems to #main
-  $("header").on("click", '.home', function() {
+  $("header").on("click", '#menu', function() {
     // global object menuItems that stores functions that you want to apply on menu items
   // call clearMenuItems function, defined in menu.js / menuItems.js
     menuItems.clearListings();
@@ -70,6 +71,11 @@ $(() => {
     views_manager.show('cart');
     cart.displayCart();
   });
+
+  $('header').on('click', '#home',function() {
+    views_manager.show('home');
+  });
+
 
 
 });

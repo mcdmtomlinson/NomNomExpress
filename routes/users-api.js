@@ -32,7 +32,7 @@ router.get("/menuItems", (req, res) => {
   // Get all menuItems,(not including user input from form - STRETCH)
   restaurantQueries
     // returns a promise that resolves to the rows returned by the query
-    .getAllMenuItems()
+    .getAllItems()
     // sends a response containing the retrieved properties data back to the client
     // as a JSON object
     .then((menuItems) => res.send({ menuItems }))

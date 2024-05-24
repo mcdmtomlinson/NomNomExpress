@@ -15,12 +15,20 @@ function getAllMenuItems(params) {
 /**
  * Sends the cart content to the backend using a POST method
  * to the route /api/orders
- * @param {*} cart
+ * @param {*} data
  * @returns ajax
  */
-function createOrder(cart) {
-  const url = '/api/orders'
+function createOrder(data) {
+  const url = '/orders';
   return $.ajax({
-    method: 'POST', url, data:cart
-  })
-};
+    url,
+    method:'POST',
+    data,
+    success: function(response) {
+      console.log('Order confirmed: ', response);
+    },
+    error: function(error) {
+      console.log('Error confirming order; ', error);
+    }
+  });
+}

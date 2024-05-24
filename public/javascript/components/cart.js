@@ -24,11 +24,14 @@ $(() => {
   `);
 
 
-  window.$cartPage = $cartPage;
+
 
   function displayTotal(total) {
     return `
-    <div> TOTAL: ${total} </div>
+    <div class="d-flex justify-content-around">
+    <div> TOTAL: $${total} </div>
+    <button id="checkout-button" type="button" class="btn btn-info">Confirm order</button>
+    </div>
     `;
   }
 
@@ -44,13 +47,22 @@ $(() => {
     }
     $cartTable.append($cartTableBody);
     $cartPage.append($cartTable);
+    $cartPage.append('<br>');
     $cartPage.append(displayTotal(total));
+
+    const data = {items: cart.cartItems, restaurantId:1, clientId:1};
+
+    $cartPage.on('click', '#checkout-button', function() {
+      createOrder(data);
+
+    });
+
   }
-
-
 
   window.cart = {};
   window.cart.displayCart = displayCart;
 
-});
+  window.$cartPage = $cartPage;
 
+
+});

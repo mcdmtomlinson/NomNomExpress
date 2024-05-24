@@ -12,15 +12,20 @@ CREATE TABLE restaurants (
   photo_url VARCHAR(255)
 );
 
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   description TEXT,
-  category VARCHAR(255) REFERENCES categories(id) ON DELETE CASCADE,
-  size: 	INTEGER,
-  price: NUMBER NOT NULL,
+  category INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+  size 	INTEGER,
+  price FLOAT NOT NULL,
   photo VARCHAR(255),
-  Restaurant_id INTEGER REFERENCES restaurant(id) OM DELETE CASCADE.
+  restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE
 )
 
 CREATE TABLE dietary_needs (
@@ -34,7 +39,4 @@ CREATE TABLE special_diet (
   name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL
-);
+

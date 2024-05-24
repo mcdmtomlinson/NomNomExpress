@@ -1,5 +1,5 @@
-INSERT INTO restaurant (name, location, phone, photo_url) VALUES
-('NomNom', 'Calgary', '6399941909', 'photo_here')
+INSERT INTO restaurants (name, location, phone, photo_url) VALUES
+('NomNom', 'Calgary', '6399941909', 'photo_here');
 
 INSERT INTO categories (name) VALUES
 ('Globally Inspired Bites'),

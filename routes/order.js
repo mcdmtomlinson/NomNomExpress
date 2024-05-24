@@ -85,7 +85,7 @@ module.exports = (database) => {
         });
     }
   });
-
+// Ryan this is how my route is going to look like
   router.post('/', (req, res)=> {
     const data = req.body;
     createOrder(data.clientId, data.restaurantId)

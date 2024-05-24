@@ -22,12 +22,21 @@ $(() => {
   <tbody>
 </tbody>
   `);
+
+
   window.$cartPage = $cartPage;
+
+  function displayTotal(total) {
+    return `
+    <div> TOTAL: ${total} </div>
+    `;
+  }
 
   function displayCart() {
     $cartTableBody.empty();
     //TODO: retrieve restaurant id from DB
     const cart = new Cart({ restaurantId: 1 });
+    const total = cart.getTotal();
 
     for (let item of cart.cartItems) {
       const cartItem = window.cartItem.createCartItem(item);
@@ -35,7 +44,10 @@ $(() => {
     }
     $cartTable.append($cartTableBody);
     $cartPage.append($cartTable);
+    $cartPage.append(displayTotal(total));
   }
+
+
 
   window.cart = {};
   window.cart.displayCart = displayCart;

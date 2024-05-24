@@ -5,7 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
-
+const db = require("./db/queries/index");
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -36,11 +36,17 @@ app.use(express.static('public'));
 // const userApiRoutes = require('./routes/users-api');
 // const widgetApiRoutes = require('./routes/widgets-api');
 // const usersRoutes = require('./routes/users');
+<<<<<<< HEAD
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 // const usersRoutes = require('./routes/users');
 // const restaurantsRoutes = require("./routes/restaurants"); // restaurant (singular? Correct path?)
 // const ordersRoutes = require("./routes/orders"); // order (singular? Correct path?)
+=======
+// const restaurantsRoutes = require("./routes/restaurants");
+const ordersRoutes = require("./routes/order");
+
+>>>>>>> master
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -48,13 +54,17 @@ const widgetApiRoutes = require('./routes/widgets-api');
 // app.use('/api/users', userApiRoutes);
 // app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
+<<<<<<< HEAD
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 // app.use("/api/restaurants", restaurantsRoutes(db)); // restaurant (singular? Correct path?)
 // app.use("/orders", ordersRoutes(db)); // order (singular? Correct path?)
+=======
+// app.use("/api/restaurants", restaurantsRoutes(db));
+app.use("/orders", ordersRoutes(db));
+>>>>>>> master
 // Note: mount other resources here, using the same pattern above
-
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).

@@ -15,6 +15,5 @@ $(() => {
 //     views_manager.show('cart');
 //   });
 
-
 });
 

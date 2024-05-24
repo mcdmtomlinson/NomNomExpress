@@ -6,12 +6,8 @@ $(() => {
 
   window.views_manager.show = function(item) {
     $home.detach();
-<<<<<<< HEAD
-    $cartForm.detach();
     $menuItems.detach();
-=======
     $cartPage.detach();
->>>>>>> master
 
     switch (item) {
     case 'home':

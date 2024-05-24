@@ -14,14 +14,6 @@ $(() => {
     if (!user) {
       // building navigation
       userLinks = `
-<<<<<<< HEAD
-      <nav id="page-header__user-links" class="page-header__user-links page-header">
-          <h1>NomNomExpress</h1>
-          <p class="home">Home</p>
-          <p class="login_button">Log In</p>
-          <p class="sign-up_button">Sign Up</p>
-          <button id="cart">cart</button>
-=======
       <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item" id="home" >Home</li>
@@ -30,7 +22,6 @@ $(() => {
           <li class="nav-item">Sign Up</li>
           <li class="nav-item" id="cart">Check out</li>
         </ul>
->>>>>>> master
       </nav>
       `;
     } else {
@@ -54,14 +45,6 @@ $(() => {
   // Allowing the function updateHeader to be accessed globally
   window.header.update = updateHeader;
 
-<<<<<<< HEAD
-  // This line appends the header to the page (temporary)
-  // because the update function, which is globally accessible and defined here,
-  // appends html to the id page-header
-  // window
-  window.header.update()
-
-=======
   // Calling function getMyDetails to render header
   updateHeader(null);
 
@@ -84,7 +67,6 @@ $(() => {
         views_manager.show('menuItems');
       });
   });
->>>>>>> master
 
   $('header').on('click', '#cart',function() {
     views_manager.show('cart');

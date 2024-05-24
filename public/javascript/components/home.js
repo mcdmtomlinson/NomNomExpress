@@ -9,8 +9,8 @@ $(() => {
   window.$home = $home;
 
   $home.on('click', '#cart',function() {
-    console.log('here');
     views_manager.show('cart');
+    cart.displayCart();
   });
 
 

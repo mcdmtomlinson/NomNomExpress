@@ -6,7 +6,7 @@ $(() => {
 
   window.views_manager.show = function(item) {
     $home.detach();
-    $cartForm.detach();
+    $cartPage.detach();
 
     switch (item) {
     case 'home':
@@ -14,7 +14,7 @@ $(() => {
       break;
 
     case 'cart':
-      $cartForm.appendTo($main);
+      $cartPage.appendTo($main);
       break;
 
     case 'menuItems':

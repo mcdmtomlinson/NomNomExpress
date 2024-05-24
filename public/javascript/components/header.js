@@ -13,14 +13,14 @@ $(() => {
     if (!user) {
       // building navigation
       userLinks = `
-      <nav id="page-header__user-links" class="page-header__user-links">
-        <ul>
-          <li class="home">Home</li>
-          <li class="login_button">Log In</li>
-          <li class="sign-up_button">Sign Up</li>
+      <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <li class="nav-item">Home</li>
+          <li class="nav-item">Log In</li>
+          <li class="nav-item">Sign Up</li>
         </ul>
       </nav>
-      `
+      `;
     } else {
       // building navigation when user is logged in
       userLinks = `
@@ -33,7 +33,7 @@ $(() => {
           <li class="logout_button">Log Out</li>
         </ul>
       </nav>
-      `
+      `;
     }
     // Appending nav to the page
     $pageHeader.append(userLinks);
@@ -43,11 +43,7 @@ $(() => {
   window.header.update = updateHeader;
 
   // Calling function getMyDetails to render header
-  getMyDetails()
-    .then(function( json ) {
-      // updating header with user info, global function
-    updateHeader(json.user);
-  });
+  updateHeader(null);
 
 
   // If home in the header is clicked, append $menuItems to #main
@@ -66,7 +62,7 @@ $(() => {
         // Call global function show from views_manager object, with listings as parameter
         // This will append $menuItmes to #main
         views_manager.show('menuItems');
-    });
+      });
   });
 
 

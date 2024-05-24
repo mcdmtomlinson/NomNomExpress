@@ -43,35 +43,12 @@ $(() => {
   // Allowing the function updateHeader to be accessed globally
   window.header.update = updateHeader;
 
+  // This line appends the header to the page (temporary)
+  // because the update function, which is globally accessible and defined here,
+  // appends html to the id page-header
+  // window
   window.header.update()
-  // Calling function getMyDetails to render header
-  getMyDetails()
-    .then(function( json ) {
-      // updating header with user info, global function
-    updateHeader(json.user);
-  });
 
-
-
-
-  // If home in the header is clicked, append $menuItems to #main
-  $("header").on("click", '.home', function() {
-    // global object menuItems that stores functions that you want to apply on menu items
-  // call clearMenuItems function, defined in menu.js / menuItems.js
-    menuItems.clearListings();
-    //Calling getAllMenuItems function, defined in network.js.
-    // Initiates an AJAX request to the server at the URL /api/menuItems?params
-    getAllMenuItems()
-      // Promise using json object as param
-      .then(function(json) {
-      //Call global function addMenuItems, which is defined in database.js. json.properties as parameter
-      // Add all properties
-        menuItems.addMenuItems(json.menuItems);
-        // Call global function show from views_manager object, with listings as parameter
-        // This will append $menuItmes to #main
-        views_manager.show('menuItems');
-    });
-  });
 
 
 });

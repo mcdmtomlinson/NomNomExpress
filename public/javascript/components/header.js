@@ -5,6 +5,7 @@ $(() => {
   // Connecting to id page-header in index.html
   const $pageHeader = $('#page-header');
   let currentUser = null;
+  //Defining updateHeader(user) function
   function updateHeader(user) {
     currentUser = user;
     $pageHeader.find("#page-header__user-links").remove();
@@ -13,12 +14,12 @@ $(() => {
     if (!user) {
       // building navigation
       userLinks = `
-      <nav id="page-header__user-links" class="page-header__user-links">
-        <ul>
-          <li class="home">Home</li>
-          <li class="login_button">Log In</li>
-          <li class="sign-up_button">Sign Up</li>
-        </ul>
+      <nav id="page-header__user-links" class="page-header__user-links page-header">
+          <h1>NomNomExpress</h1>
+          <p class="home">Home</p>
+          <p class="login_button">Log In</p>
+          <p class="sign-up_button">Sign Up</p>
+          <button id="cart">cart</button>
       </nav>
       `
     } else {
@@ -42,12 +43,15 @@ $(() => {
   // Allowing the function updateHeader to be accessed globally
   window.header.update = updateHeader;
 
+  window.header.update()
   // Calling function getMyDetails to render header
   getMyDetails()
     .then(function( json ) {
       // updating header with user info, global function
     updateHeader(json.user);
   });
+
+
 
 
   // If home in the header is clicked, append $menuItems to #main

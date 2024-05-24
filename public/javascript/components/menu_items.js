@@ -17,8 +17,8 @@ $(() => {
   window.menuItems = {};
 
   // Define function addListing, appending 'listing' parameter to $propertyListings html
-  function addMenuItem(menuItem) {
-    $menuItems.append(menuItem);
+  function addMenuItem(item) {
+    $menuItems.append(item);
   }
 
   // Define function clearListings, emptying all listings from $propertyListings html
@@ -32,21 +32,21 @@ $(() => {
 
   // Define addMenuItems function
   // This function is called in index.js, header.js
-  function addMenuItems(menuItems) {
+  function addItems(items) {
     clearMenuItems();
-    for (const menuItemId in menuItems) {
-      // Defining variable property to createListing for that property
-      const item = menuItems[menuItemId];
-      // Passing the function createMenuItem to variable listing
-      // which adds menu item info to html article,
-
-      const menuItem = menuItem.createMenuItem(item);
-      // appending menu item to $menuItems html
+    for (const itemId in items) {
+      // Defining variable property to createListing for that item
+      const item = items[itemId];
+      // Passsing the result of the function createMenuItem to variable item
+      // which adds listing info to html article,
+      // specifying if it is a reservation
+      const menuItem = window.menuItem.createMenuItem(item);
+      // appending listing to $propertyListings html
       addMenuItem(menuItem);
     }
   }
   // creating a new key on object, allowing addProperties to be used globally
-  window.menuItems.addMenuItems = addMenuItems;
+  window.menuItems.addItems = addItems;
 
 
 });

@@ -25,7 +25,6 @@ $(() => {
   window.$cartPage = $cartPage;
 
   function displayCart() {
-    console.log('display calling');
     //TODO: retrieve restaurant id from DB
     const cart = new Cart({ restaurantId: 1 });
 

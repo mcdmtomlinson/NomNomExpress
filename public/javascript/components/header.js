@@ -18,6 +18,7 @@ $(() => {
           <li class="nav-item">Home</li>
           <li class="nav-item">Log In</li>
           <li class="nav-item">Sign Up</li>
+          <li class="nav-item" id="cart">Check out</li>
         </ul>
       </nav>
       `;
@@ -63,6 +64,11 @@ $(() => {
         // This will append $menuItmes to #main
         views_manager.show('menuItems');
       });
+  });
+
+  $('header').on('click', '#cart',function() {
+    views_manager.show('cart');
+    cart.displayCart();
   });
 
 

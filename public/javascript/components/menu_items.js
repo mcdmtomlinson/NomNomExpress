@@ -8,6 +8,11 @@ $(() => {
   // html kept as global variable
   window.$menuItems = $menuItems;
 
+  // window.views_manager.show('menuItems')
+
+
+
+
   // global object that stores functinos that you want to apply on a property listings
   window.menuItems = {};
 
@@ -42,5 +47,6 @@ $(() => {
   }
   // creating a new key on object, allowing addProperties to be used globally
   window.menuItems.addMenuItems = addMenuItems;
+
 
 });

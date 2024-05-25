@@ -9,6 +9,9 @@ function getAllMenuItems(params) {
   }
   return $.ajax({
     url,
+  })
+  .done(function(data) {
+    console.log("Success:", data);
   });
 }
 

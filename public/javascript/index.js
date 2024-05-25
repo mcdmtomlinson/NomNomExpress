@@ -9,7 +9,7 @@ $(()=> {
   // Returning Promise using json object as param
   getAllMenuItems().then(function( json ) {
     console.log(json);
-    json['test'] = "test value"
+    json['test'] = "test value";
     menuItems.addItems(json); // supposed to be json.properties
   /// Call global function show from views_manager object, with listings as parameter
   // This will append $propertyListings to #main

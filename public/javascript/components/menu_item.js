@@ -6,7 +6,14 @@ $(() => {
   // Defining the function createMenuItem which adds listing info to html article
   function createMenuItem(item) {
     return `
-      <div><h3> This is the item - ${item} </h3> </div>`
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${item}</h5>
+          <p class="card-text">This is the item - ${item}</p>
+          <a href="#" class="btn btn-primary">Add To Cart</a>
+        </div>
+      </div>`
     // FOR NOW CREATE DUMMY ITEM, THEN CREATE ARTICLE
 
     // <article class="property-listing">

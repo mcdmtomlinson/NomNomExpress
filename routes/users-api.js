@@ -28,7 +28,11 @@ router.get('/', (req, res) => {
 
 // GET request is made to /menuItems
 router.get("/menuItems", (req, res) => {
-  // Calling getAllMenuItems from DATABASE.JS (not network.js)
+  // In addition to the menu items object, I want to send
+  // clientID
+
+
+  // Calling getAllMenuItems from DATABASE.JS
   // Get all menuItems,(not including user input from form - STRETCH)
   restaurantQueries
     // returns a promise that resolves to the rows returned by the query

@@ -13,6 +13,9 @@ $(() => {
     case 'home':
       $home.appendTo($main);
       break;
+    case 'menu':
+      $menuItems.appendTo($main);
+      break;
 
     case 'cart':
       $cartPage.appendTo($main);

@@ -1,17 +1,8 @@
 $(()=> {
-  // views_manager.show('home');
-  // views_manager.show('menuItems');
 
-
-
-  //Calling getAllMenuItems function, defined in network.js.
-  // Initiates an AJAX request to the server at the URL /api/menItems?params
-  // Returning Promise using json object as param
   getAllMenuItems().then(function( json ) {
     console.log(json);
-    menuItems.addItems(json); // supposed to be json.properties
-  /// Call global function show from views_manager object, with listings as parameter
-  // This will append $propertyListings to #main
+    menuItems.addItems(json);
     views_manager.show('menuItems');
   });
 });
@@ -38,10 +29,5 @@ $("main").on("click", '.add-to-cart', function() {
   // ClientId still missing
   // Ability to remove items from cart still missing (or not available here)
   createCartItem(itemData)
-
-
-
-
-
 
 });

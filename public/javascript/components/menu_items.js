@@ -8,39 +8,47 @@ $(() => {
   // html kept as global variable
   window.$menuItems = $menuItems;
 
-  // global object that stores functinos that you want to apply on a property listings
+  // window.views_manager.show('menuItems')
+
+
+
+
+  // global object that stores functinos that you want to apply on a menu item
   window.menuItems = {};
 
-  // Define function addListing, appending 'listing' parameter to $propertyListings html
-  function addMenuItem(menuItem) {
-    $menuItems.append(menuItem);
+  // Define function addMenuItem, appending 'item' parameter to html #main
+  function addMenuItem(item) {
+    $menuItems.append(item);
   }
 
-  // Define function clearListings, emptying all listings from $propertyListings html
+  // Define function clearMenuItems, emptying all listings from $menuItems html
 
   function clearMenuItems() {
     $menuItems.empty();
   }
 
-  // Setting clearListings as a global function
+  // Setting clearMenuItems as a global function
   window.menuItems.clearListings = clearMenuItems;
 
   // Define addMenuItems function
   // This function is called in index.js, header.js
-  function addMenuItems(menuItems) {
+  function addItems(items) {
     clearMenuItems();
-    for (const menuItemId in menuItems) {
-      // Defining variable property to createListing for that property
-      const item = menuItems[menuItemId];
-      // Passing the function createMenuItem to variable listing
-      // which adds menu item info to html article,
+    // console.log('test', items["menuItems"][0]['name']);
+    for (const itemId in items["menuItems"]) {
+      // console.log(items["menuItems"][itemId]["name"]);
 
-      const menuItem = menuItem.createMenuItem(item);
-      // appending menu item to $menuItems html
+      // Defining variable item to createMenuItem for that item
+      const item = items["menuItems"][itemId];
+      // Passsing the result of the function createMenuItem to variable item
+      // which adds listing info to html article,
+      const menuItem = window.menuItem.createMenuItem(item);
+      // appending menu item to html
       addMenuItem(menuItem);
     }
   }
   // creating a new key on object, allowing addProperties to be used globally
-  window.menuItems.addMenuItems = addMenuItems;
+  window.menuItems.addItems = addItems;
+
 
 });

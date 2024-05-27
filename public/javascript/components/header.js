@@ -5,6 +5,7 @@ $(() => {
   // Connecting to id page-header in index.html
   const $pageHeader = $('#page-header');
   let currentUser = null;
+  //Defining updateHeader(user) function
   function updateHeader(user) {
     currentUser = user;
     $pageHeader.find("#page-header__user-links").remove();
@@ -16,7 +17,7 @@ $(() => {
       <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item" id="home" >Home</li>
-          <li class="nav-item" id="menu" >Menu</li>
+          <li class="nav-item menu" id="menu" >Menu</li>
           <li class="nav-item">Log In</li>
           <li class="nav-item">Sign Up</li>
           <li class="nav-item" id="cart">Check out</li>
@@ -48,23 +49,10 @@ $(() => {
   updateHeader(null);
 
 
-  // If home in the header is clicked, append $menuItems to #main
-  $("header").on("click", '#menu', function() {
-    // global object menuItems that stores functions that you want to apply on menu items
-  // call clearMenuItems function, defined in menu.js / menuItems.js
-    menuItems.clearListings();
-    //Calling getAllMenuItems function, defined in network.js.
-    // Initiates an AJAX request to the server at the URL /api/menuItems?params
-    getAllMenuItems()
-      // Promise using json object as param
-      .then(function(json) {
-      //Call global function addMenuItems, which is defined in database.js. json.properties as parameter
-      // Add all properties
-        menuItems.addMenuItems(json.menuItems);
-        // Call global function show from views_manager object, with listings as parameter
-        // This will append $menuItmes to #main
-        views_manager.show('menuItems');
-      });
+  // If menu in the header is clicked, append $menuItems to #main
+  $('header').on("click", '.menu', function() {
+    console.log('.menu was clicked');
+    views_manager.show('menu');
   });
 
   $('header').on('click', '#cart',function() {
@@ -73,6 +61,7 @@ $(() => {
   });
 
   $('header').on('click', '#home',function() {
+    console.log('#home was clicked');
     views_manager.show('home');
   });
 

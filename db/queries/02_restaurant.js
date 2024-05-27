@@ -6,11 +6,12 @@ const {query} = require('./index.js');
  * @param {Number} id of the user.
  * @return {Promise<{}>} A promise to the user.
  */
-const getMenuItems = () => {
+const getAllItems = () => {
   return query(
     `SELECT * FROM menu_items`,
   )
     .then((result) => {
+      console.log(result.rows);
       return result.rows;
     })
     .catch((err) => {
@@ -37,4 +38,4 @@ const getMenuItem = (id) => {
     });
 };
 
-module.exports = { getMenuItems, getMenuItem };
+module.exports = { getAllItems, getMenuItem };

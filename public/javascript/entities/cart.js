@@ -10,6 +10,7 @@ class Cart {
       { id: 1, name: "Korean BBQ Lettuce Wraps", quantity: 3, price: 8, specialRequests: null },
       { id: 8, name: "Edamame with Spicy Mayo", quantity: 2, price: 6, specialRequests: null },
     ];
+
     window.localStorage.setItem('cartItems', JSON.stringify(dummyData));
 
     // Fetch from local storage

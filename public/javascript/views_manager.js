@@ -6,11 +6,15 @@ $(() => {
 
   window.views_manager.show = function(item) {
     $home.detach();
+    $menuItems.detach();
     $cartPage.detach();
 
     switch (item) {
     case 'home':
       $home.appendTo($main);
+      break;
+    case 'menu':
+      $menuItems.appendTo($main);
       break;
 
     case 'cart':

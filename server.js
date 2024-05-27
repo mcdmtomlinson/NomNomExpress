@@ -36,6 +36,11 @@ app.use(express.static('public'));
 // const userApiRoutes = require('./routes/users-api');
 // const widgetApiRoutes = require('./routes/widgets-api');
 // const usersRoutes = require('./routes/users');
+const userApiRoutes = require('./routes/users-api');
+const widgetApiRoutes = require('./routes/widgets-api');
+// const usersRoutes = require('./routes/users');
+// const restaurantsRoutes = require("./routes/restaurants"); // restaurant (singular? Correct path?)
+// const ordersRoutes = require("./routes/orders"); // order (singular? Correct path?)
 // const restaurantsRoutes = require("./routes/restaurants");
 const ordersRoutes = require("./routes/order");
 
@@ -46,6 +51,11 @@ const ordersRoutes = require("./routes/order");
 // app.use('/api/users', userApiRoutes);
 // app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
+app.use('/api/users', userApiRoutes);
+app.use('/api/widgets', widgetApiRoutes);
+// app.use('/users', usersRoutes);
+// app.use("/api/restaurants", restaurantsRoutes(db)); // restaurant (singular? Correct path?)
+// app.use("/orders", ordersRoutes(db)); // order (singular? Correct path?)
 // app.use("/api/restaurants", restaurantsRoutes(db));
 app.use("/orders", ordersRoutes(db));
 // Note: mount other resources here, using the same pattern above

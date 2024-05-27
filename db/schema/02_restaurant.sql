@@ -26,7 +26,7 @@ CREATE TABLE menu_items (
   price FLOAT NOT NULL,
   photo VARCHAR(255),
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE dietary_needs (
   id SERIAL PRIMARY KEY NOT NULL,

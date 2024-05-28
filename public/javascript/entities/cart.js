@@ -6,16 +6,18 @@ class Cart {
 
   getCartItems() {
     // dummy data this is what Ryan will do, delete this lines
-    const dummyData = [
-      { id: 1, name: "Korean BBQ Lettuce Wraps", quantity: 3, price: 8, specialRequests: null },
-      { id: 8, name: "Edamame with Spicy Mayo", quantity: 2, price: 6, specialRequests: null },
-    ];
 
-    window.localStorage.setItem('cartItems', JSON.stringify(dummyData));
 
     // Fetch from local storage
-    const items = JSON.parse(window.localStorage.getItem("cartItems"));
-    return items.map(item => new CartItem(item));
+    const menu = JSON.parse(window.localStorage.getItem("cartItems"));
+
+    const finalOrder = [];
+
+    for (let key in menu.items) {
+      const item = menu.items[key];
+      finalOrder.push(new CartItem(item));
+    }
+    return finalOrder;
   }
 
   getTotal() {

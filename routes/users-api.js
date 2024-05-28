@@ -39,7 +39,10 @@ router.get("/menuItems", (req, res) => {
     .getAllItems()
     // sends a response containing the retrieved properties data back to the client
     // as a JSON object
-    .then((menuItems) => res.send({ menuItems }))
+    .then((menuItems) =>{
+      console.log(menuItems, 'backend');
+      return res.send({ menuItems });
+    })
     .catch((e) => {
       console.error(e);
       res.send(e);

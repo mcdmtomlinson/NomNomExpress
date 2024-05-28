@@ -1,6 +1,6 @@
 $(()=> {
 
-  getAllMenuItems().then(function( json ) {
+  getAllMenuItems().then(function(json) {
     console.log(json);
     menuItems.addItems(json);
     views_manager.show('menuItems');
@@ -19,7 +19,7 @@ $("main").on("click", '.add-to-cart', function() {
 
   let itemData = menuItem.data('item'); // retrieving data for that item
 
- // If itemData is a JSON string, parse it to an object
+  // If itemData is a JSON string, parse it to an object
   if (typeof itemData === 'string') {
     itemData = JSON.parse(itemData);
   }
@@ -32,13 +32,13 @@ $("main").on("click", '.add-to-cart', function() {
 
   let currentCart = JSON.parse(window.localStorage.getItem('cartItems'));
 
-  if(!currentCart) {
-      currentCart = {
-            restaurantId: 1,
-            items: {}
-      }
+  if (!currentCart) {
+    currentCart = {
+      restaurantId: 1,
+      items: {}
+    };
   }
-  if(!currentCart.items[itemData.id]) {
+  if (!currentCart.items[itemData.id]) {
     currentCart.items[itemData.id] = itemData;
     currentCart.items[itemData.id].quantity = 1;
   } else {
@@ -48,5 +48,7 @@ $("main").on("click", '.add-to-cart', function() {
 
   localStorage.setItem('cartItems', JSON.stringify(currentCart));
 
+
+  
 
 });

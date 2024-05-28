@@ -34,4 +34,14 @@ const createOrderDetails = (cart) => {
     });
 };
 
-module.exports = { createOrder, createOrderDetails };
+const getOrderDetails = (orderId) => {
+  return query(`SELECT * FROM order_details WHERE order_id = $1`, [orderId])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { createOrder, createOrderDetails, getOrderDetails };

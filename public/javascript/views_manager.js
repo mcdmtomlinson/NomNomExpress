@@ -8,6 +8,8 @@ $(() => {
     $home.detach();
     $menuItems.detach();
     $cartPage.detach();
+    $orderSuccesful.detach();
+    
 
     switch (item) {
     case 'home':

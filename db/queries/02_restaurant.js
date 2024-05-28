@@ -11,7 +11,7 @@ const getAllItems = () => {
     `SELECT * FROM menu_items`,
   )
     .then((result) => {
-      console.log(result.rows);
+      console.log(result.rows, 'rows');
       return result.rows;
     })
     .catch((err) => {

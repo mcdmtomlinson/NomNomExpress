@@ -40,6 +40,8 @@ $(() => {
 
       // Defining variable item to createMenuItem for that item
       const item = items["menuItems"][itemId];
+      // Set quantity property to 0
+      // item["quantity"] = 0
       // Passsing the result of the function createMenuItem to variable item
       // which adds listing info to html article,
       const menuItem = window.menuItem.createMenuItem(item);

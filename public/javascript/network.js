@@ -10,9 +10,9 @@ function getAllMenuItems(params) {
   return $.ajax({
     url,
   })
-  .done(function(data) {
-    console.log("Success:", data);
-  });
+    .done(function(data) {
+      console.log("Success:", data);
+    });
 }
 
 /**
@@ -37,15 +37,3 @@ function createOrder(data) {
   });
 }
 
-/**
- * Sends the cart content to the backend using a POST method
- * to the route /api/orders
- * @param {*} cart
- * @returns ajax
- */
-function createOrder(cart) {
-  const url = '/api/orders'
-  return $.ajax({
-    method: 'POST', url, data:cart
-  })
-};

@@ -9,7 +9,7 @@ $(() => {
     $menuItems.detach();
     $cartPage.detach();
     $orderSuccesful.detach();
-    
+
 
     switch (item) {
     case 'home':
@@ -20,6 +20,7 @@ $(() => {
       break;
 
     case 'cart':
+      window.cart.displayCart();
       $cartPage.appendTo($main);
       break;
 

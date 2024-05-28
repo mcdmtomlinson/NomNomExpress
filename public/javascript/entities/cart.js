@@ -12,7 +12,9 @@ class Cart {
     const menu = JSON.parse(window.localStorage.getItem("cartItems"));
 
     const finalOrder = [];
-
+    if (!menu) {
+      return finalOrder;
+    }
     for (let key in menu.items) {
       const item = menu.items[key];
       finalOrder.push(new CartItem(item));

@@ -57,7 +57,6 @@ $(() => {
 
   $('header').on('click', '#cart',function() {
     views_manager.show('cart');
-    cart.displayCart();
   });
 
   $('header').on('click', '#home',function() {

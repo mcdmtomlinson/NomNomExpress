@@ -10,9 +10,9 @@ function getAllMenuItems(params) {
   return $.ajax({
     url,
   })
-  .done(function(data) {
-    console.log("Success:", data);
-  });
+    .done(function(data) {
+      console.log("Success:", data);
+    });
 }
 
 /**
@@ -29,9 +29,11 @@ function createOrder(data) {
     data,
     success: function(response) {
       views_manager.show('orderSuccesful');
+      localStorage.removeItem('cartItems');
     },
     error: function(error) {
       console.log('Error confirming order; ', error);
     }
   });
 }
+

@@ -8,6 +8,9 @@ $(() => {
     $home.detach();
     $menuItems.detach();
     $cartPage.detach();
+    $orderSuccesful.detach();
+    $orders.detach();
+
 
     switch (item) {
     case 'home':
@@ -18,6 +21,7 @@ $(() => {
       break;
 
     case 'cart':
+      window.cart.displayCart();
       $cartPage.appendTo($main);
       break;
 
@@ -32,6 +36,11 @@ $(() => {
         $error.remove();
         views_manager.show('cart');
       }, 2000);
+      break;
+    }
+
+    case 'order': {
+      $order.appendTo($main);
       break;
     }
 

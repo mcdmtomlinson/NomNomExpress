@@ -4,6 +4,8 @@ $(() => {
 
   // Connecting to id page-header in index.html
   const $pageHeader = $('#page-header');
+  const usertype = window.localStorage.getItem('user');
+
   let currentUser = null;
   //Defining updateHeader(user) function
   function updateHeader(user) {
@@ -11,7 +13,7 @@ $(() => {
     $pageHeader.find("#page-header__user-links").remove();
     let userLinks;
 
-    if (!user) {
+    if (usertype === "client") {
       // building navigation
       userLinks = `
       <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -30,8 +32,8 @@ $(() => {
       <nav id="page-header__user-links" class="page-header__user-links">
         <ul>
           <li class="home">Home</li>
+          <li class="home">Orders</li>
 
-          <li>${user.name}</li>
 
           <li class="logout_button">Log Out</li>
         </ul>
@@ -57,7 +59,6 @@ $(() => {
 
   $('header').on('click', '#cart',function() {
     views_manager.show('cart');
-    cart.displayCart();
   });
 
   $('header').on('click', '#home',function() {

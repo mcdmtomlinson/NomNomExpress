@@ -12,7 +12,11 @@ $(() => {
           <h5 class="card-title">${item["name"]}</h5>
           <p class="card-text">${item["description"]}</p>
           <p>$${item["price"]}</p>
-          <a href="#" class="btn btn-primary add-to-cart">Add To Cart</a>
+          <div class="add-to-cart">
+           <a href="#" class="btn btn-primary add-to-cart-btn-decrease">-</a>
+            <p><span class="quantity">0</span></p>
+            <a href="#" class="btn btn-primary add-to-cart-btn">+</a>
+          </div>
         </div>
       </div>`;
 

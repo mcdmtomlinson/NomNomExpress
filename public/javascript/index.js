@@ -49,4 +49,6 @@ $("main").on("click", '.add-to-cart', function() {
   localStorage.setItem('cartItems', JSON.stringify(currentCart));
 
 
+  
+
 });

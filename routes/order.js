@@ -89,28 +89,35 @@ module.exports = (database) => {
     }
   });
   // Ryan this is how my route is going to look like
-  router.post('/', (req, res)=> {
+  router.post('/', (req, res) => {
     const data = req.body;
+
     createOrder(data.clientId, data.restaurantId)
-      .then((order)=>{
+      .then((order) => {
+        const orderDetailsPromises = [];
+
         for (let x in data.items) {
           const orderDetailsData = {
             'order_id': order.id,
-            'menu_item_id':data.items[x].id,
+            'menu_item_id': data.items[x].id,
             'quantity': data.items[x].quantity,
             'special_requests': data.items[x].specialRequests,
             'price': data.items[x].price
           };
-          createOrderDetails(orderDetailsData)
-            .then((_) => {
-              const message = `Hey! Your NomNomExpress order ${order.id} has landed at NomNom! Our chefs are on it like ninjas on noodles 🥷🍜. Stay tuned, deliciousness is in the making! 😋✨`;
-              sendSMS(message);
-              localStorage.removeItem(cartItems);
-            });
+          orderDetailsPromises.push(createOrderDetails(orderDetailsData));
         }
-      });
-    return res.sendStatus(200);
-  });
 
+        return Promise.all(orderDetailsPromises)
+          .then(() => {
+            const message = `Hey! Your NomNomExpress order ${order.id} has landed at NomNom! Our chefs are on it like ninjas on noodles 🥷🍜. Stay tuned, deliciousness is in the making! 😋✨`;
+            sendSMS(message);
+            return res.sendStatus(200);
+          });
+      })
+      .catch((error) => {
+        console.error("Error processing order: ", error);
+        return res.sendStatus(500);
+      });
+  });
   return router;
 };

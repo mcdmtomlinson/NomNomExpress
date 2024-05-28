@@ -29,6 +29,7 @@ function createOrder(data) {
     data,
     success: function(response) {
       views_manager.show('orderSuccesful');
+      localStorage.removeItem('cartItems');
     },
     error: function(error) {
       console.log('Error confirming order; ', error);

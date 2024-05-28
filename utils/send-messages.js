@@ -2,7 +2,7 @@ require('dotenv').config();
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 
-const sendSms = function(message, phone = process.env.PHONE) {
+const sendSMS = function(message, phone = process.env.PHONE) {
   const client = require('twilio')(accountSid, authToken);
   client.messages
     .create({
@@ -13,4 +13,4 @@ const sendSms = function(message, phone = process.env.PHONE) {
     .then(message => console.log(message.sid));
 };
 
-module.exports = { sendSms };
+module.exports = { sendSMS };

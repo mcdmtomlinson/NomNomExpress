@@ -13,7 +13,7 @@ $(() => {
     $pageHeader.find("#page-header__user-links").remove();
     let userLinks;
 
-    if (usertype === "client") {
+    if (!user) {
       // building navigation
       userLinks = `
       <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">

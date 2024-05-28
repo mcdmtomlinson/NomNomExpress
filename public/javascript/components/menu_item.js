@@ -7,14 +7,14 @@ $(() => {
   function createMenuItem(item) {
     return `
       <div class="card menu-item" style="width: 18rem;" data-item='${JSON.stringify(item)}'>
-        <img src="${item["photo"]} class="card-img-top" alt="...">
+        <img src="${item["photo"]}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${item["name"]}</h5>
           <p class="card-text">${item["description"]}</p>
           <p>$${item["price"]}</p>
           <a href="#" class="btn btn-primary add-to-cart">Add To Cart</a>
         </div>
-      </div>`
+      </div>`;
 
   }
   // Allowing the function to be accessed globally

@@ -4,13 +4,16 @@
  *   these routes are mounted onto /restaurants
  * Refer to: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
-
+const {sendSMS} = require('../utils/send-messages');
 const express = require('express');
 const router  = express.Router();
 // const authMiddleware = require("../middleware/auth-middleware");
 // const { sendMessage } = require("../helpers/sendMessage");
 const moment = require('moment');
-const { createOrder, createOrderDetails } = require('../db/queries/03_orders');
+const { createOrder, createOrderDetails, getOrderDetails } = require('../db/queries/03_orders');
+
+
+
 
 // Required restaurant to be logged in to access order routes
 /* router.use((req, res, next) => {
@@ -85,7 +88,7 @@ module.exports = (database) => {
         });
     }
   });
-// Ryan this is how my route is going to look like
+  // Ryan this is how my route is going to look like
   router.post('/', (req, res)=> {
     const data = req.body;
     createOrder(data.clientId, data.restaurantId)
@@ -98,7 +101,12 @@ module.exports = (database) => {
             'special_requests': data.items[x].specialRequests,
             'price': data.items[x].price
           };
-          createOrderDetails(orderDetailsData);
+          createOrderDetails(orderDetailsData)
+            .then((_) => {
+              const message = `Hey! Your NomNomExpress order ${order.id} has landed at NomNom! Our chefs are on it like ninjas on noodles 🥷🍜. Stay tuned, deliciousness is in the making! 😋✨`;
+              sendSMS(message);
+              localStorage.removeItem(cartItems);
+            });
         }
       });
     return res.sendStatus(200);

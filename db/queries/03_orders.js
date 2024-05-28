@@ -6,10 +6,10 @@ const {query} = require('./index.js');
  * @param {Number} id of the user.
  * @return {Promise<{}>} A promise to the user.
  */
-const createOrder = (clientsId, restaurantId) => {
+const createOrder = async(clientsId, restaurantId) => {
   return query(
     `INSERT INTO orders (client, restaurant_id, date) VALUES
-    ($1, $2, NOW())`,
+    ($1, $2, NOW()) RETURNING *`,
     [clientsId, restaurantId ]
   )
     .then((result) => {
@@ -23,7 +23,7 @@ const createOrder = (clientsId, restaurantId) => {
 const createOrderDetails = (cart) => {
   return query(
     `INSERT INTO order_details (order_id, menu_item_id, quantity, special_requests, price) VALUES
-    ($1, $2, $3, $4, $5)`,
+    ($1, $2, $3, $4, $5) RETURNING *`,
     [cart.order_id, cart.menu_item_id, cart.quantity, cart. special_requests, cart.price]
   )
     .then((result) => {
@@ -34,4 +34,14 @@ const createOrderDetails = (cart) => {
     });
 };
 
-module.exports = { createOrder, createOrderDetails };
+const getOrderDetails = (orderId) => {
+  return query(`SELECT * FROM order_details WHERE order_id = $1`, [orderId])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { createOrder, createOrderDetails, getOrderDetails };

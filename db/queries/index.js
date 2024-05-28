@@ -4,7 +4,7 @@ const pool = new Pool({
   user: "development",
   password: "development",
   host: "localhost",
-  database: "nomnom-express",
+  database: "midterm",
 });
 
 const query = (text, params, callback) => {

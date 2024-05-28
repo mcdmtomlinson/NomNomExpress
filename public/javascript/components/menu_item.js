@@ -4,26 +4,18 @@ $(() => {
   window.menuItem = {};
 
   // Defining the function createMenuItem which adds listing info to html article
-  function createMenuItem(menuItem) {
+  function createMenuItem(item) {
     return `
-    <article class="menu-item">
-        <section class="menu-item__preview-image">
-          <img src="${menuItem.thumbnail_photo_url}" alt="Menu Item">
-        </section>
-        <section class="menu-item__details">
-          <h3 class="menu-item__title">${menu-item.name}</h3>
-          <ul class="menu-item__details">
-            <li>${menuItem.details}</li>
-          </ul>
+      <div class="card menu-item" style="width: 18rem;" data-item='${JSON.stringify(item)}'>
+        <img src="${item["photo"]}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${item["name"]}</h5>
+          <p class="card-text">${item["description"]}</p>
+          <p>$${item["price"]}</p>
+          <a href="#" class="btn btn-primary add-to-cart">Add To Cart</a>
+        </div>
+      </div>`;
 
-            : ``}
-          <footer class="menu-item__footer">
-
-            <div class="property-listing__price">$${menuItem/100.0}</div>
-          </footer>
-        </section>
-      </article>
-    `
   }
   // Allowing the function to be accessed globally
   window.menuItem.createMenuItem = createMenuItem;

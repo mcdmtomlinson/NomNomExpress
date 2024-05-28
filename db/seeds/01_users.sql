@@ -5,7 +5,7 @@ VALUES
 ('Bob Smith', 'bob.smith@example.com', '234-567-8901', '456 Oak Street, Springfield, IL', 'bob.jpg', 'securepassword2', false),
 ('Catherine Davis', 'catherine.davis@example.com', '345-678-9012', '789 Pine Street, Springfield, IL', 'catherine.jpg', 'securepassword3', true),
 ('Daniel Brown', 'daniel.brown@example.com', '456-789-0123', '321 Birch Street, Springfield, IL', 'daniel.jpg', 'securepassword4', false),
-('Eva Green', 'eva.green@example.com', '567-890-1234', '654 Cedar Street, Springfield, IL', 'eva.jpg', 'securepassword5', true);
+('Eva Green', 'eva.green@example.com', '567-890-1234', '654 Cedar Street, Springfield, IL', 'eva.jpg', 'securepassword5', true),
 ('Oliver Williams', 'oliver.williams@example.com', '111-111-1111', '100 Elm Street, Springfield, IL', 'oliver.jpg', 'password6', true),
 ('Liam Brown', 'liam.brown@example.com', '222-222-2222', '200 Maple Avenue, Springfield, IL', 'liam.jpg', 'password7', false),
 ('Emma Johnson', 'emma.johnson@example.com', '333-333-3333', '300 Oak Lane, Springfield, IL', 'emma.jpg', 'password8', true),

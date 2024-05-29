@@ -24,21 +24,21 @@ $("main").on("click", '.add-to-cart-btn', function() {
     itemData = JSON.parse(itemData);
   }
 
-// Retrieve the current cart items stored in browser's local storage under the key cartItems
-// Convert the JSON string retrieved from local storage into a JavaScript object.
+  // Retrieve the current cart items stored in browser's local storage under the key cartItems
+  // Convert the JSON string retrieved from local storage into a JavaScript object.
   let currentCart = JSON.parse(window.localStorage.getItem('cartItems'));
 
   //If no cart items are stored yet.
-  if(!currentCart) {
+  if (!currentCart) {
     // Create a new cart object
-      currentCart = {
-            restaurantId: 1,
-            items: {}
-      }
+    currentCart = {
+      restaurantId: 1,
+      items: {}
+    };
   }
 
   // If the item does not exist in the cart..
-  if(!currentCart.items[itemData.id]) {
+  if (!currentCart.items[itemData.id]) {
     // Add the item to the cart
     currentCart.items[itemData.id] = itemData;
     // Set the quantity to 1
@@ -50,7 +50,7 @@ $("main").on("click", '.add-to-cart-btn', function() {
 
   // Selecting html of quantity and rendering it dynamically
   let $menuItemQuantity = menuItem.find(".quantity");
-  $menuItemQuantity.text(JSON.stringify(currentCart.items[itemData.id].quantity))
+  $menuItemQuantity.text(JSON.stringify(currentCart.items[itemData.id].quantity));
 
   // converts the updated currentCart object back into a JSON string and saves it
   // in the browser's local storage under the key cartItems.
@@ -71,46 +71,52 @@ $("main").on("click", '.add-to-cart-btn-decrease', function() {
 
   let itemData = menuItem.data('item'); // retrieving data for that item
 
- // If itemData is a JSON string, parse it to an object
+  // If itemData is a JSON string, parse it to an object
   if (typeof itemData === 'string') {
     itemData = JSON.parse(itemData);
   }
 
-// Retrieve the current cart items stored in browser's local storage under the key cartItems
-// Convert the JSON string retrieved from local storage into a JavaScript object.
+  // Retrieve the current cart items stored in browser's local storage under the key cartItems
+  // Convert the JSON string retrieved from local storage into a JavaScript object.
   let currentCart = JSON.parse(window.localStorage.getItem('cartItems'));
 
   //If no cart items are stored yet.
-  if(!currentCart) {
+  if (!currentCart) {
     // Create a new cart object
-      currentCart = {
-            restaurantId: 1,
-            items: {}
-      }
+    currentCart = {
+      restaurantId: 1,
+      items: {}
+    };
   }
 
   // If the item does not exist in the cart..
-  if(!currentCart.items[itemData.id]) {
+  if (!currentCart.items[itemData.id]) {
     // Add the item to the cart
     currentCart.items[itemData.id] = itemData;
     // Set the quantity to 1
     currentCart.items[itemData.id].quantity = 1;
-  } else if (currentCart.items[itemData.id].quantity > 0){
+  } else if (currentCart.items[itemData.id].quantity > 0) {
     // Subtract 1 from quantity
     currentCart.items[itemData.id].quantity --;
+    if (currentCart.items[itemData.id].quantity === 0) {
+      delete currentCart.items[itemData.id];
+    }
   }
 
 
   // Selecting html of quantity and rendering it dynamically
   let $menuItemQuantity = menuItem.find(".quantity");
-  $menuItemQuantity.text(JSON.stringify(currentCart.items[itemData.id].quantity))
-
+  if (currentCart.items[itemData.id]) {
+    $menuItemQuantity.text(JSON.stringify(currentCart.items[itemData.id].quantity));
+  } else {
+    $menuItemQuantity.text("0");
+  }
   // converts the updated currentCart object back into a JSON string and saves it
   // in the browser's local storage under the key cartItems.
-
   localStorage.setItem('cartItems', JSON.stringify(currentCart));
-
-
+  if (Object.keys(currentCart.items).length === 0) {
+    localStorage.removeItem("cartItems");
+  }
 
 
 });

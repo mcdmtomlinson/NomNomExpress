@@ -54,4 +54,20 @@ const deleteCompletedOrder = (orderId) => {
     });
 };
 
-module.exports = { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder };
+const getOrderForRestaurant = () => {
+  return query(`
+  SELECT orders.id AS order_id, orders.client AS client_id, orders.restaurant_id, string_agg(CONCAT(order_details.quantity, ' ',menu_items.name), ', ') AS order_details
+  FROM orders
+  JOIN order_details ON order_details.order_id = orders.id
+  JOIN menu_items ON order_details.menu_item_id = menu_items.id
+  GROUP BY orders.id
+  `)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder, getOrderForRestaurant };

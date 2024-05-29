@@ -10,7 +10,7 @@ const router  = express.Router();
 // const authMiddleware = require("../middleware/auth-middleware");
 // const { sendMessage } = require("../helpers/sendMessage");
 const moment = require('moment');
-const { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder } = require('../db/queries/03_orders');
+const { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder, getOrderForRestaurant } = require('../db/queries/03_orders');
 
 
 
@@ -23,20 +23,6 @@ const { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder }
 module.exports = (database) => {
   // Get all orders and all required details for orders index,
   // then render views/restaurants/orders_index.ejs with orders data
-  router.get("/", (req, res) => {
-    database.getAllOrders()
-      .then(orders => {
-        orders.forEach((order, i) => {
-          orders[i].order_date = moment(order.order_date).format('dddd, MMMM Do YYYY, h:mm:ss a');
-        });
-        res.render('restaurants/orders_index', { orders, ...req.defaultVars });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
 
   // Get details for a single order and all required fields for order detail
   // then render views/restaurants/orders_detail.ejs with order data
@@ -129,6 +115,19 @@ module.exports = (database) => {
         return res.sendStatus(203);
       });
 
+  });
+
+
+  router.get("/", (req, res) => {
+    getOrderForRestaurant()
+      .then(orders => {
+        res.send({orders});
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
   return router;

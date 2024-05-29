@@ -25,7 +25,7 @@ function createOrder(data) {
   const url = '/orders';
   return $.ajax({
     url,
-    method:'POST',
+    method: 'POST',
     data,
     success: function(response) {
       views_manager.show('orderSuccesful');
@@ -41,7 +41,7 @@ function orderComplete(orderId) {
   const url = `/orders/complete/${orderId}`;
   return $.ajax({
     url,
-    method:'DELETE',
+    method: 'DELETE',
     success: function(response) {
     },
     error: function(error) {
@@ -50,3 +50,15 @@ function orderComplete(orderId) {
   });
 }
 
+function getOrderForRestaurant() {
+  const url = `/orders`;
+  return $.ajax({
+    url,
+    method: 'GET',
+    success: function(response) {
+    },
+    error: function(error) {
+      console.log('Error confirming order; ', error);
+    }
+  });
+}

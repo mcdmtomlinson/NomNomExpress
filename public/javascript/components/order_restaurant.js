@@ -8,7 +8,6 @@ $(() => {
       <td>${orderDetail.client_id}</td>
       <td>${orderDetail.restaurant_id}</td>
       <td>${orderDetail.order_details}</td>
-      <td>${orderDetail.order_total}</td>
       <td><button class="order_ready">Order ready</button></td>
     </tr>
   `;

@@ -23,6 +23,7 @@ $(() => {
           <li class="nav-item">Log In</li>
           <li class="nav-item">Sign Up</li>
           <li class="nav-item" id="cart">Check out</li>
+          <li class="nav-item" id="restaurant">Restaurant Orders</li>
         </ul>
       </nav>
       `;
@@ -64,6 +65,11 @@ $(() => {
   $('header').on('click', '#home',function() {
     console.log('#home was clicked');
     views_manager.show('home');
+  });
+
+  $('header').on('click', '#restaurant',function() {
+    console.log('#home was clicked');
+    views_manager.show('ordersRestaurant');
   });
 
 

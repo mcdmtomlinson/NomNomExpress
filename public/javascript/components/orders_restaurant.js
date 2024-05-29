@@ -1,67 +1,93 @@
-const $orders_restaurant = $(`
-<div>
+$(() => {
 
-</div>
-`);
- const $ordersHeader = $(`
- <h1>ORDER SUMMARY</h1>
-<br>
- `);
-const $ordersTable = $(`
-<table class="table table-borderless">
-<thead>
-<tr>
-  <th>Order ID</th>
-  <th>Name</th>
-  <th>Menu Items</th>
-  <th>Order Status</th>
-</tr>
-</thead>
-</table>
-`);
+  const $ordersRestaurant = $(`
+  <div>
 
-const $ordersTableBody = $(`
-<tbody>
-</tbody>
-`);
-
-
-function displayStatus(Status) {
-  return `
-  <div class="d-flex justify-content-around">
-  <div> TOTAL: $${total} </div>
-  <button id="checkout-button" type="button" class="btn btn-info">Confirm order</button>
   </div>
-  `;
-}
+  `);
+  const $ordersHeader = $(`
+   <h1>ORDERS IN PROGRESS</h1>
+  <br>
+   `);
+  const $ordersTable = $(`
+  <table class="table table-borderless">
+  <thead>
+  <tr>
+    <th>Order_ID</th>
+    <th>Name</th>
+    <th>Details</th>
+    <th>Total</th>
+  </tr>
+  </thead>
+</table>
+  `);
 
-function displayOrders() {
-  $ordersTableBody.empty();
-  $ordersPage.empty();
+  const $ordersTableBody = $(`
+  <tbody>
+</tbody>
+  `);
 
-  //TODO: retrieve restaurant id from DB
-  const orders = new Orders({ restaurantId: 1 });
-  const status = orders.getStatus();
 
-  if(orders.ordersItems.length === 0) {
-    $ordersPage.append($orderEmpty);
-  } else {
-    for (let item of orders.ordersItems) {
-      const ordersItem = window.ordersItem.createordersItem(item);
-      $ordersTableBody.append(orderItem);
+  function displayOrders() {
+    $ordersTableBody.empty();
+    $ordersRestaurant.empty();
+
+    const orders = [
+      {
+        order_id: 1,
+        client_id: 1,
+        restaurant_id: 1,
+        order_details: "3 burguers",
+        order_total: 30.00
+      },
+      {
+        order_id: 2,
+        client_id: 3,
+        restaurant_id: 1,
+        order_details: "2 summer rolls",
+        order_total: 16.00
+      },
+      {
+        order_id: 3,
+        client_id: 5,
+        restaurant_id: 1,
+        order_details: "4 empanadas",
+        order_total: 20.00
+      }
+    ];
+
+    //TODO: retrieve orders from backend.
+
+    for (let order of orders) {
+      const orderDetails = window.orderDetails.createOrder(order);
+
+      $ordersTableBody.append(orderDetails);
     }
-    $ordersPage.append($ordersHeader);
-    $ordersTable.append($ordersTableBody);
-    $ordersPage.append($ordersTable);
-    $ordersPage.append('<br>');
-    $ordersPage.append(displayStatus(Status));
 
-}
-
-window.orders = {};
-window.orders.displayOrders = displayOrders;
-
-window.$ordersPage = $ordersPage;
+    $ordersRestaurant.append($ordersHeader);
+    $ordersRestaurant.append($ordersTable);
+    $ordersRestaurant.append($ordersTableBody);
 
 
-};
+
+    $ordersRestaurant.on('click', '.order_ready', function() {
+
+      let orderItem = $(this).closest('.order-item');
+      let orderId = orderItem.data('item');
+      console.log(orderId);
+      // orderComplete(orderId);
+      // $cartPage.empty();
+    });
+  }
+
+
+
+
+
+  window.order = {};
+  window.order.displayOrders = displayOrders;
+
+  window.$ordersRestaurant = $ordersRestaurant;
+
+
+});

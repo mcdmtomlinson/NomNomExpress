@@ -37,3 +37,18 @@ function createOrder(data) {
   });
 }
 
+function orderComplete(data) {
+  const url = '/orders/complete';
+  return $.ajax({
+    url,
+    method:'POST',
+    data,
+    success: function(response) {
+
+    },
+    error: function(error) {
+      console.log('Error confirming order; ', error);
+    }
+  });
+}
+

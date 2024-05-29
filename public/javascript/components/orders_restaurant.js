@@ -14,8 +14,9 @@ $(() => {
   <thead>
   <tr>
     <th>Order id</th>
-    <th>Client id</th>
-    <th>Restaurant id</th>
+    <th>Client</th>
+    <th>Restaurant</th>
+    <th>Total</th>
     <th>Order details</th>
     <th></th>
   </tr>

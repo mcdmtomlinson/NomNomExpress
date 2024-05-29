@@ -56,11 +56,14 @@ const deleteCompletedOrder = (orderId) => {
 
 const getOrderForRestaurant = () => {
   return query(`
-  SELECT orders.id AS order_id, orders.client AS client_id, orders.restaurant_id, string_agg(CONCAT(order_details.quantity, ' ',menu_items.name), ', ') AS order_details
+  SELECT orders.id AS order_id, users.name AS client_id, restaurants.name AS restaurant_id, SUM(order_details.quantity * order_details.price) AS total, string_agg(CONCAT(order_details.quantity, ' ',menu_items.name), ', ') AS order_details
   FROM orders
   JOIN order_details ON order_details.order_id = orders.id
   JOIN menu_items ON order_details.menu_item_id = menu_items.id
-  GROUP BY orders.id
+  JOIN users ON orders.client = users.id
+  JOIN restaurants ON restaurants.id = orders.restaurant_id
+  GROUP BY orders.id, users.name, restaurants.name
+  ORDER BY orders.id
   `)
     .then((result) => {
       return result.rows;

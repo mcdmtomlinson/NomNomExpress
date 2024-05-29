@@ -10,7 +10,7 @@ const router  = express.Router();
 // const authMiddleware = require("../middleware/auth-middleware");
 // const { sendMessage } = require("../helpers/sendMessage");
 const moment = require('moment');
-const { createOrder, createOrderDetails, getOrderDetails } = require('../db/queries/03_orders');
+const { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder } = require('../db/queries/03_orders');
 
 
 
@@ -119,5 +119,17 @@ module.exports = (database) => {
         return res.sendStatus(500);
       });
   });
+
+
+  router.delete('/complete/:id', (req, res) => {
+    const orderId = req.params.id;
+    return deleteCompletedOrder(orderId)
+      .then(() =>{
+        sendSMS('"Hey there, foodies! Your delicious NomNom order is ready to pick up. Come and get it before it starts flirting with the other meals!" 🍔😋');
+        return res.sendStatus(203);
+      });
+
+  });
+
   return router;
 };

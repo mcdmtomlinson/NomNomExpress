@@ -44,4 +44,14 @@ const getOrderDetails = (orderId) => {
     });
 };
 
-module.exports = { createOrder, createOrderDetails, getOrderDetails };
+const deleteCompletedOrder = (orderId) => {
+  return query(`DELETE FROM orders WHERE id = $1`, [orderId])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { createOrder, createOrderDetails, getOrderDetails, deleteCompletedOrder };

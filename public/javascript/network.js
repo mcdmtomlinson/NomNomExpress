@@ -37,14 +37,12 @@ function createOrder(data) {
   });
 }
 
-function orderComplete(data) {
-  const url = '/orders/complete';
+function orderComplete(orderId) {
+  const url = `/orders/complete/${orderId}`;
   return $.ajax({
     url,
-    method:'POST',
-    data,
+    method:'DELETE',
     success: function(response) {
-
     },
     error: function(error) {
       console.log('Error confirming order; ', error);

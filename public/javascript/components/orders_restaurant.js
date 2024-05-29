@@ -78,8 +78,7 @@ $(() => {
 
       let orderItem = $(this).closest('.order-item');
       let orderId = orderItem.data('item');
-      console.log(orderId);
-      // orderComplete(orderId);
+      orderComplete(orderId);
       // $cartPage.empty();
     });
   }

@@ -74,7 +74,7 @@ $(() => {
       $cartPage.append(displayTotal(total));
 
       //Ryan please send this also
-      const data = {items: cart.cartItems, restaurantId:1, clientId:1};
+      const data = {items: cart.cartItems, restaurantId:1, clientId:Math.floor(Math.random() * (50 - 1 + 1) + 1)};
 
       $cartPage.on('click', '#checkout-button', function() {
         createOrder(data);

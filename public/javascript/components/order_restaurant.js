@@ -7,6 +7,7 @@ $(() => {
       <td>${orderDetail.order_id}</td>
       <td>${orderDetail.client_id}</td>
       <td>${orderDetail.restaurant_id}</td>
+      <td>$${orderDetail.total}.00</td>
       <td>${orderDetail.order_details}</td>
       <td><button class="order_ready">Order ready</button></td>
     </tr>

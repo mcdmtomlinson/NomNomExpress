@@ -10,6 +10,7 @@ $(() => {
     $cartPage.detach();
     $orderSuccesful.detach();
     $ordersRestaurant.detach();
+    $orderCompleted.detach();
 
 
     switch (item) {
@@ -47,6 +48,11 @@ $(() => {
 
     case 'orderSuccesful': {
       $orderSuccesful.appendTo($main);
+      break;
+    }
+
+    case 'orderCompleted': {
+      $orderCompleted.appendTo($main);
       break;
     }
 

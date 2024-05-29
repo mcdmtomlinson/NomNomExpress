@@ -43,6 +43,7 @@ function orderComplete(orderId) {
     url,
     method: 'DELETE',
     success: function(response) {
+      views_manager.show('orderCompleted')
     },
     error: function(error) {
       console.log('Error confirming order; ', error);

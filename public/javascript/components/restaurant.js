@@ -1,24 +1,5 @@
 // Assuming you have retrieved order details from the database
-const order = {
-  id:  // Order ID
-  customerName: "John Doe",
-  phoneNumber: "123-456-7890",
-  restaurant: { // Restaurant details (assuming retrieved from database)
-    name: "Pizza Palace",
-    location: "123 Main St",
-  },
-  items: [
-    { // Example menu item
-      id: 1,
-      name: "Large Pepperoni Pizza",
-      price: 15.99,
-      category: "Pizza",
-    },
-    // Add more items as needed
-  ],
-  totalPrice: 25.48, // Order total price
-  originalPickupTime: new Date("2024-05-29 18:00:00"), // Example pickup time
-};
+
 
 // Function to confirm order details
 function confirmOrderDetails(order) {
@@ -72,3 +53,27 @@ if (confirmOrderDetails(order)) {
 } else {
   console.log("Order confirmation cancelled.");
 }
+
+
+// API endpoint to receive orders
+app.post('/orders', async (req, res) => {
+  try {
+    const newOrder = new Order(req.body);
+
+    // Order validation logic (replace with your specific validation)
+    if (!newOrder.customerName || !newOrder.phoneNumber || !newOrder.items.length) {
+      return res.status(400).json({ message: 'Missing required order details' });
+    }
+
+    // Save the order to the database
+    await newOrder.save();
+
+    // Send confirmation response
+    res.json({ message: 'Order received successfully!', orderId: newOrder._id });
+
+    // Implement additional logic for order processing (inventory update, staff notification, etc.)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});

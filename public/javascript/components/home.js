@@ -9,8 +9,8 @@ $(() => {
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Welcome to NomNom-Express, your go-to app for ordering mouthwatering food for pickup! Explore local restaurants, place orders effortlessly, and enjoy convenient pickups without the wait. With NomNom-Express, satisfying your cravings is just a tap away. Download now and elevate your pickup experience!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Menu</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Orders</button>
       </div>
     </div>
   </div>

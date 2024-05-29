@@ -9,7 +9,7 @@ $(() => {
     $menuItems.detach();
     $cartPage.detach();
     $orderSuccesful.detach();
-    //$orders.detach();
+    $orders.detach();
 
 
     switch (item) {
@@ -39,10 +39,10 @@ $(() => {
       break;
     }
 
-/*     case 'order': {
-      $order.appendTo($main);
+    case 'orders': {
+      $orders.appendTo($main);
       break;
-    } */
+    }
 
     case 'orderSuccesful': {
       $orderSuccesful.appendTo($main);

@@ -13,14 +13,17 @@ $(() => {
   <table class="table table-borderless">
   <thead>
   <tr>
-    <th>Order_ID</th>
-    <th>Name</th>
-    <th>Details</th>
-    <th>Total</th>
+    <th>Order id</th>
+    <th>Client id</th>
+    <th>Restaurant id</th>
+    <th>Order details</th>
+    <th>Order total</th>
+    <th></th>
   </tr>
   </thead>
 </table>
   `);
+
 
   const $ordersTableBody = $(`
   <tbody>
@@ -65,8 +68,9 @@ $(() => {
     }
 
     $ordersRestaurant.append($ordersHeader);
+    $ordersTable.append($ordersTableBody);
     $ordersRestaurant.append($ordersTable);
-    $ordersRestaurant.append($ordersTableBody);
+
 
 
 

@@ -18,12 +18,12 @@ $(() => {
       userLinks = `
       <nav id="page-header__user-links" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          <li class="nav-item" id="home" >Home</li>
-          <li class="nav-item menu" id="menu" >Menu</li>
-          <li class="nav-item">Log In</li>
-          <li class="nav-item">Sign Up</li>
-          <li class="nav-item" id="cart">Check out</li>
-          <li class="nav-item" id="restaurant">Restaurant Orders</li>
+          <li class="nav-item nav-link py-3 px-2" id="home" >Home</li>
+          <li class="nav-item nav-link menu py-3 px-2" id="menu" >Menu</li>
+          <li class="nav-item nav-link py-3 px-2">Log In</li>
+          <li class="nav-item nav-link py-3 px-2">Sign Up</li>
+          <li class="nav-item nav-link py-3 px-2" id="cart">Check out</li>
+          <li class="nav-item nav-link py-3 px-2" id="restaurant">Restaurant Orders</li>
         </ul>
       </nav>
       `;
